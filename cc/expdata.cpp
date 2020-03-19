@@ -119,11 +119,6 @@ ExperimentalData::ExperimentalData()
 }
 ExperimentalData::~ExperimentalData()
 {
-    // arrayPrinter(ExperimentalData::yrast0);
-    // arrayPrinter(ExperimentalData::tw1);
-    // arrayPrinter(ExperimentalData::tw2);
-    arrayPrinter(spins);
-    arrayPrinter(energies);
 }
 
 void ExperimentalData::arrayPrinter(std::vector<double> &array)

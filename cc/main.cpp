@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "../include/expdata.h"
+#include "../include/energyFormulas.h"
 #include <utility>
 
 void newLine()
@@ -19,12 +20,20 @@ void testApp()
 
 int main()
 {
-    // auto x = new ExperimentalData;
     auto x = std::make_unique<ExperimentalData>();
-    // for (auto id = 0; id < x->energies.size(); ++id)
-    // {
-    //     std::cout << x->energies.at(id) << " ";
-    // }
-    newLine();
-    testApp();
+    auto I = x->spins.at(0);
+    auto j = EnergyFormulae::jSP;
+    auto spins = x->spins;
+    auto energies = x->energies;
+
+    double i1 = 129;
+    double i2 = 3;
+    double i3 = 52;
+    double theta = -160;
+    for (auto id = 0; id < ExperimentalData::yrast0.size()-1; ++id)
+    {
+        auto I = spins.at(id);
+        auto currentValue = EnergyFormulae::yrast0(I, j, theta, i1, i2, i3);
+        std::cout << spins.at(id) << " " << energies.at(id) << " " << currentValue << "\n";
+    }
 }
