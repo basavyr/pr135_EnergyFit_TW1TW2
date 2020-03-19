@@ -137,8 +137,9 @@ void ExperimentalData::arrayPrinter(std::vector<double> &array)
 
 void ExperimentalData::generateData(std::vector<double> &spins, std::vector<double> &energies)
 {
+    const double e0 = ExperimentalData::yrast0.at(0);
     //generate the TOTAL spin container
-    for (int i = 0; i < ExperimentalData::spin0.size(); ++i)
+    for (int i = 1; i < ExperimentalData::spin0.size(); ++i)
     {
         spins.emplace_back(spin0.at(i));
     }
@@ -151,16 +152,16 @@ void ExperimentalData::generateData(std::vector<double> &spins, std::vector<doub
         spins.emplace_back(spin2.at(i));
     }
     //generate the TOTAL energy container
-    for (int i = 0; i < ExperimentalData::yrast0.size(); ++i)
+    for (int i = 1; i < ExperimentalData::yrast0.size(); ++i)
     {
-        energies.emplace_back(yrast0.at(i));
+        energies.emplace_back(yrast0.at(i) - e0);
     }
     for (int i = 0; i < ExperimentalData::tw1.size(); ++i)
     {
-        energies.emplace_back(tw1.at(i));
+        energies.emplace_back(tw1.at(i) - e0);
     }
     for (int i = 0; i < ExperimentalData::tw2.size(); ++i)
     {
-        energies.emplace_back(tw2.at(i));
+        energies.emplace_back(tw2.at(i) - e0);
     }
 }

@@ -12,7 +12,10 @@ public:
     ~ExperimentalData();
     static void arrayPrinter(std::vector<double> &);
     static void generateData(std::vector<double> &, std::vector<double> &);
+    //3-FOLD CONTAINERS TO HOLD THE EXPERIMENTAL SPINS AND ENERGIES
     std::vector<double> spins;
+    //3-FOLD CONTAINERS TO HOLD THE EXPERIMENTAL SPINS AND ENERGIES
+    //THESE ARE THE EXCITATION ENERGIES
     std::vector<double> energies;
 
 public:
