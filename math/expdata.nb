@@ -1,0 +1,182 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5296,        172]
+NotebookOptionsPosition[      4215,        144]
+NotebookOutlinePosition[      4552,        159]
+CellTagsIndexPosition[      4509,        156]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["", "135"], TraditionalForm]], "Section",
+  FormatType->"TraditionalForm",ExpressionUUID->
+  "0602c10a-bff5-4fac-b068-6d743e94fcf4"],
+ "Pr - experimental wobbling spectra"
+}], "Section",
+ CellChangeTimes->{{3.7936028026165*^9, 
+  3.7936028466212463`*^9}},ExpressionUUID->"76acd103-bff1-45b4-bc3c-\
+d34e70a29329"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Sensharma et al. 2019
+Energies in keV\
+\>", "Chapter",
+ CellChangeTimes->{{3.79360281912228*^9, 
+  3.793602822904141*^9}},ExpressionUUID->"a8a6417a-80f4-45d2-8580-\
+d67810817991"],
+
+Cell[CellGroupData[{
+
+Cell["Gammas (between band states) - \[Gamma] ", "Section",
+ CellChangeTimes->{{3.7936028285649033`*^9, 
+  3.793602830630495*^9}},ExpressionUUID->"82087ac9-00f6-46d6-a822-\
+22d7dd74766f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[Gamma]0", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "372.9", ",", "659.8", ",", "854.3", ",", "999.7", ",", "1075.6", ",", 
+     "843.7", ",", "834.3", ",", "882.2", ",", "922.4", ",", "957.0", ",", 
+     "1005.0"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"e0", "=", "358.0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"gs", "=", 
+   RowBox[{"e0", "+", 
+    RowBox[{"\[Gamma]0", "[", 
+     RowBox[{"[", "1", "]"}], "]"}]}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{"ground", "-", 
+    RowBox[{
+    "state", " ", "band", " ", "for", " ", "the", " ", "TW1", " ", "and", " ",
+      "TW2", " ", "decay"}]}], "*)"}], "\n", 
+  RowBox[{"e01", "=", 
+   RowBox[{"gs", "+", "746.6"}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{"band", " ", "head", " ", "for", " ", "TW1"}], "*)"}], "\n", 
+  RowBox[{"e02", "=", 
+   RowBox[{"gs", "+", "1197.1"}]}], ";", 
+  RowBox[{"(*", 
+   RowBox[{"band", " ", "head", " ", "for", " ", "TW2"}], "*)"}], "\n", 
+  RowBox[{"\[Gamma]1", "=", 
+   RowBox[{"{", 
+    RowBox[{"726.5", ",", "795.7", ",", "955.7", ",", "1111.7"}], "}"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"\[Gamma]2", "=", 
+   RowBox[{"{", 
+    RowBox[{"826.6", ",", "763.8", ",", "1009.0"}], "}"}]}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.79360277930589*^9, 
+  3.793602779314467*^9}},ExpressionUUID->"89a18eaf-a5aa-415e-bd6d-\
+0d8a445fc718"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Energies (experimental - raw)", "Section",
+ CellChangeTimes->{{3.793602856797161*^9, 
+  3.793602858108426*^9}},ExpressionUUID->"b0b32c27-7f64-4925-9220-\
+f2f54b6409a9"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"y0", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"tw1", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"tw2", "=", 
+   RowBox[{"{", "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7936027962409897`*^9, 
+  3.793602796247428*^9}},ExpressionUUID->"fc49cab3-eb2c-40c1-98c7-\
+c5571d285417"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Spins (experimental)", "Section",
+ CellChangeTimes->{{3.7936028629209843`*^9, 
+  3.793602863676005*^9}},ExpressionUUID->"56c937ac-faef-43b3-b234-\
+68af9cc0cef6"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"spin0", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "5.5", ",", "7.5", ",", "9.5", ",", "11.5", ",", "13.5", ",", "15.5", ",",
+      "17.5", ",", "19.5", ",", "21.5", ",", "23.5", ",", "25.5", ",", 
+     "27.5"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"spin1", "=", 
+   RowBox[{"{", 
+    RowBox[{"8.5", ",", "10.5", ",", "12.5", ",", "14.5", ",", "16.5"}], 
+    "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"spin2", "=", 
+   RowBox[{"{", 
+    RowBox[{"9.5", ",", "11.5", ",", "13.5", ",", "15.5"}], "}"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.793602785384121*^9, 
+  3.7936027853936253`*^9}},ExpressionUUID->"ff387af9-491c-46b0-b3b7-\
+5cc5e7c1169f"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{12, Automatic}, {Automatic, 24}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 372, 10, 73, "Section",ExpressionUUID->"76acd103-bff1-45b4-bc3c-d34e70a29329"],
+Cell[CellGroupData[{
+Cell[955, 34, 189, 6, 106, "Chapter",ExpressionUUID->"a8a6417a-80f4-45d2-8580-d67810817991"],
+Cell[CellGroupData[{
+Cell[1169, 44, 187, 3, 67, "Section",ExpressionUUID->"82087ac9-00f6-46d6-a822-22d7dd74766f"],
+Cell[1359, 49, 1355, 39, 157, "Input",ExpressionUUID->"89a18eaf-a5aa-415e-bd6d-0d8a445fc718"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2751, 93, 174, 3, 67, "Section",ExpressionUUID->"b0b32c27-7f64-4925-9220-f2f54b6409a9"],
+Cell[2928, 98, 361, 12, 73, "Input",ExpressionUUID->"fc49cab3-eb2c-40c1-98c7-c5571d285417"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3326, 115, 167, 3, 67, "Section",ExpressionUUID->"56c937ac-faef-43b3-b234-68af9cc0cef6"],
+Cell[3496, 120, 691, 20, 73, "Input",ExpressionUUID->"ff387af9-491c-46b0-b3b7-5cc5e7c1169f"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
