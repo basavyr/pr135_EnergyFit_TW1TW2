@@ -33,6 +33,6 @@ This `C++` project is structured as follows:
   * `expData.h` - Serves the experimental data to the main algorithm. Experimental data consists in the energy states for the three triaxial bands (namely Y0,TW1 and TW2). Units are in MeV (if not, a transformation method will be provided in the header). **Algorithm works with EXCITATION energies**. So the first state from Y0 will be subtracted.
   * `fitProcedure.h` - The methods for calculating an RMS as a function of the free parameters and also a minimization procedure to find the best RMS value.
 * The **cc** directory which includes:
-  * `energyFormulas.cpp` - 
-  * `main.cpp` - 
-  * `fitProcedure.cpp` - 
+  * `energyFormulas.cpp` 
+  * `main.cpp` 
+  * `fitProcedure.cpp`

@@ -1,0 +1,21 @@
+In[1]:=
+
+^135Pr - experimental wobbling spectra
+Sensharma et al. 2019
+Energies in keV
+Gammas (between band states) - γ 
+In[2]:= γ0={372.9,659.8,854.3,999.7,1075.6,843.7,834.3,882.2,922.4,957.0,1005.0};
+e0=358.0;
+gs=e0+γ0[[1]];(*ground-state band for the TW1 and TW2 decay*)
+e01=gs+746.6;(*band head for TW1*)
+e02=gs+1197.1;(*band head for TW2*)
+γ1={726.5,795.7,955.7,1111.7};
+γ2={826.6,763.8,1009.0};
+Energies (experimental - raw)
+In[12]:= y0={};
+tw1={};
+tw2={};
+Spins (experimental)
+In[28]:= spin0={5.5,7.5,9.5,11.5,13.5,15.5,17.5,19.5,21.5,23.5,25.5,27.5};
+spin1={8.5,10.5,12.5,14.5,16.5};
+spin2={9.5,11.5,13.5,15.5};
