@@ -21,5 +21,10 @@ int main()
 {
     // auto x = new ExperimentalData;
     auto x = std::make_unique<ExperimentalData>();
+    // for (auto id = 0; id < x->energies.size(); ++id)
+    // {
+    //     std::cout << x->energies.at(id) << " ";
+    // }
+    newLine();
     testApp();
 }

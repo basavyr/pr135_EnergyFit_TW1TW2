@@ -10,6 +10,14 @@ class ExperimentalData
 public:
     ExperimentalData();
     ~ExperimentalData();
+    static void arrayPrinter(std::vector<double> &);
+    static void generateData(std::vector<double> &, std::vector<double> &);
+    std::vector<double> spins;
+    std::vector<double> energies;
+
+public:
+    //the ground state energy (E0->Y0)
+    static constexpr double gse = 358.0;
 
     //init functions for arrays
 public:
