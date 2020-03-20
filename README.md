@@ -8,6 +8,8 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters](#least-squares-fit-procedure-for-getting-the-mathsemanticsmrowmsubmiemimtextrmsmtextmsubmrowannotation-encodingapplicationx-texe_textrmsannotationsemanticsmatherms-and-the-free-parameters)
   - [Details on the problem](#details-on-the-problem)
   - [Structure of the code](#structure-of-the-code)
+  - [Simple import of an image (*testing*)](#simple-import-of-an-image-testing)
+  - [Potential fit results](#potential-fit-results)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -36,3 +38,19 @@ This `C++` project is structured as follows:
   * `energyFormulas.cpp` 
   * `main.cpp` 
   * `fitProcedure.cpp`
+
+## Simple import of an image (*testing*)
+![](2020-03-20-12-35-20.png)
+
+## Potential fit results
+![](2020-03-20-12-39-29.png)
+
+These are the fit parameters obtained within the new `C++` algorithm which includes the confirmed two-phonon wobbling band `TW2`.
+
+Searching for the best RMS finished...  
+Total number of iterations= 793117000  
+BEST RESULTS FOR THE THREE BANDS ARE:  
+I1   I2   I3   THETA  
+89   12   48   -71  
+ENERGY RMS:   
+0.174452  

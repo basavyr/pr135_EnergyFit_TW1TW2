@@ -37,22 +37,106 @@ void Fit::generateTheoreticalData(ExperimentalData &obj, std::vector<double> &fi
     auto yrastSize = ExperimentalData::spin0.size() - 1;
     auto tw1Size = ExperimentalData::spin1.size();
     auto tw2Size = ExperimentalData::spin2.size();
-
+    auto totalSize = yrastSize + tw1Size + tw2Size;
+    int errorchecker = 0;
     //fill the YRAST BAND
     for (auto id = 0; id < yrastSize; ++id)
     {
-        auto spin = obj.spins.at(id);
+        auto I = obj.spins.at(id);
+        auto energy_I = EnergyFormulae::yrast0(I, j, theta, i1, i2, i3);
+        //only add valid numbers
+        if (energy_I != 6969)
+        {
+            finalStack.emplace_back(energy_I);
+            errorchecker++;
+        }
+        else
+        {
+            /* code */
+        }
     }
 
     //fill the TW1 BAND
     for (auto id = yrastSize; id < tw1Size + yrastSize; ++id)
     {
-        auto spin = obj.spins.at(id);
+        auto I = obj.spins.at(id);
+        auto energy_I = EnergyFormulae::tw1(I, j, theta, i1, i2, i3);
+        //only add valid numbers
+        if (energy_I != 6969)
+        {
+            finalStack.emplace_back(energy_I);
+            errorchecker++;
+        }
+        else
+        {
+            /* code */
+        }
     }
 
     //fill the TW2 BAND
     for (auto id = tw1Size + yrastSize; id < tw1Size + yrastSize + tw2Size; ++id)
     {
-        auto spin = obj.spins.at(id);
+        auto I = obj.spins.at(id);
+        auto energy_I = EnergyFormulae::tw2(I, j, theta, i1, i2, i3);
+        //only add valid numbers
+        if (energy_I != 6969)
+        {
+            finalStack.emplace_back(energy_I);
+            errorchecker++;
+        }
     }
+    //check if the generated array has the correct size;
+    if (errorchecker != totalSize)
+        std::cout << "SHOULD FAIL IN RMS CALCULATION..."
+                  << "\n";
+}
+
+void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
+{
+    paramLimits limits;
+
+    //get the experimental results from the class-object
+    auto expEnergies = obj.energies;
+
+    double minval = 9876543210.123;
+
+    int noIterations = 0;
+    //start searching for the minimum rms
+    for (double i1 = limits.I_left; i1 <= limits.I_right; i1 += limits.I_step)
+    {
+        for (double i2 = limits.I_left; i2 <= limits.I_right; i2 += limits.I_step)
+        {
+            for (double i3 = limits.I_left; i3 <= limits.I_right; i3 += limits.I_step)
+            {
+                for (double theta = limits.theta_left; theta <= limits.theta_right; theta += limits.theta_step)
+
+                {
+                    //generate the theoretical stack
+                    std::vector<double> thEnergies;
+
+                    //populate the theoretical energies stack
+                    Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
+
+                    //calculate the rms
+                    auto currentRMS = rmsCalculation(expEnergies, thEnergies);
+
+                    //store the value (if less then current minval)
+                    if (currentRMS <= minval && currentRMS != 6969)
+                    {
+                        minval = currentRMS;
+                        bestParams.I1_min = i1;
+                        bestParams.I2_min = i2;
+                        bestParams.I3_min = i3;
+                        bestParams.theta_min = theta;
+                        bestParams.RMS_min = minval;
+                    }
+                    //count the iterations
+                    noIterations++;
+                }
+            }
+        }
+    }
+    std::cout << "Searching for the best RMS finished..."
+              << "\n";
+    std::cout << "Total number of iterations= " << noIterations << "\n";
 }

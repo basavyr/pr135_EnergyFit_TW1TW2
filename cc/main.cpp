@@ -19,24 +19,102 @@ void testApp()
     newLine();
 }
 
+template <typename T>
+void printArray(std::vector<T> &stack)
+{
+    std::cout << "{ ";
+    for (auto id = 0; id < stack.size(); ++id)
+    {
+        if (id == stack.size() - 1)
+        {
+            std::cout << stack.at(id) << " };";
+            newLine();
+        }
+        else
+        {
+            std::cout << stack.at(id) << " , ";
+        }
+    }
+}
+
+template <typename T>
+void printArray_selector(std::vector<T> &stack, int left, int right)
+{
+    if (left >= 0 && left < stack.size() - 1 && right > 0 && right <= stack.size())
+    {
+        std::cout << "{ ";
+        for (auto id = left; id < right; ++id)
+        {
+            if (id == right - 1)
+            {
+                std::cout << stack.at(id) << " }; ";
+                newLine();
+            }
+            else
+            {
+                std::cout << stack.at(id) << " , ";
+            }
+        }
+    }
+    else
+    {
+        std::cout << "Invalid limits for the stack!";
+        newLine();
+    }
+}
+
 int main()
 {
-    auto x = std::make_unique<ExperimentalData>();
-    auto I = x->spins.at(0);
+    auto nucleus = std::make_unique<ExperimentalData>();
+    auto I = nucleus->spins.at(0);
     auto j = EnergyFormulae::jSP;
-    auto spins = x->spins;
-    auto energies = x->energies;
+    auto spins = nucleus->spins;
+    auto energies = nucleus->energies;
 
-    double i1 = 129;
-    double i2 = 3;
-    double i3 = 52;
-    double theta = -160;
-    for (auto id = ExperimentalData::yrast0.size() - 1; id < ExperimentalData::yrast0.size() - 1 + ExperimentalData::tw1.size(); ++id)
-    {
-        auto I = spins.at(id);
-        auto currentValue = EnergyFormulae::tw1(I, j, theta, i1, i2, i3);
-        // std::cout << spins.at(id) << " " << energies.at(id) << " " << currentValue << "\n";
-    }
-    std::vector<double> source;
-    Fit::generateTheoreticalData(*x, source, theta, i1, i2, i3);
+    double i1 = 89;
+    double i2 = 12;
+    double i3 = 48;
+    double theta = -71;
+
+    // std::vector<double> thEnergies;
+    // Fit::generateTheoreticalData(*nucleus, thEnergies, theta, i1, i2, i3);
+    // std::cout << "Experiment vs. theory comparison"
+    //           << "\n";
+    // std::cout << "I    E_exp     E_th"
+    //           << "\n";
+    // for (int i = 0; i < spins.size(); ++i)
+    // {
+    //     std::cout << spins.at(i) << " " << energies.at(i) << " " << thEnergies.at(i) << "\n";
+    // }
+    // std::cout << "********** RMS **********"
+    //           << "\n";
+    // std::cout << Fit::rmsCalculation(energies, thEnergies) << "\n";
+
+    std::vector<double> thEnergies;
+    Fit::generateTheoreticalData(*nucleus, thEnergies, theta, i1, i2, i3);
+    // printArray(energies);
+    // newLine();
+    printArray_selector(energies, 0, 11);
+    newLine();
+    printArray_selector(energies, 11, 16);
+    newLine();
+    printArray_selector(energies, 16, 20);
+    newLine();
+    printArray_selector(thEnergies, 0, 11);
+    newLine();
+    printArray_selector(thEnergies, 11, 16);
+    newLine();
+    printArray_selector(thEnergies, 16, 20);
+
+    // auto bestParams = Fit::paramSet();
+    // Fit::getMinimum_RMS(*nucleus, bestParams);
+
+    // std::cout << "BEST RESULTS FOR THE THREE BANDS ARE:"
+    //           << "\n";
+    // std::cout << "I1   I2   I3   THETA"
+    //           << "\n";
+    // std::cout << bestParams.I1_min << "   " << bestParams.I2_min << "   " << bestParams.I3_min << "   " << bestParams.theta_min << "\n";
+    // std::cout << "ENERGY RMS: "
+    //           << "\n";
+    // std::cout << bestParams.RMS_min << std::endl;
 }

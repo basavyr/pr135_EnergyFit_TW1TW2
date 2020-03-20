@@ -108,7 +108,9 @@ double EnergyFormulae::tw2(double spin, double oddSpin, double theta, double i1,
     auto I = spin;
     auto j = oddSpin;
 
-    auto eTW2_I = EnergyFormulae::excitationEnergy(1, I, j, theta, i1, i2, i3);
+    //work with I-1
+    //any I state from TW2 is built on top of TW1 with a 1-phonon energy from the state I-1
+    auto eTW2_I = EnergyFormulae::excitationEnergy(1, I - 1, j, theta, i1, i2, i3);
     if (!isnan(eTW2_I))
         return eTW2_I - e0;
     return 6969;
