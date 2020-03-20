@@ -2,6 +2,27 @@
 // #include "../include/expdata.h"
 #include "../include/energyFormulas.h"
 
+Fit::Fit()
+{
+    startTime = std::chrono::high_resolution_clock::now();
+}
+
+Fit::~Fit()
+{
+    measureTime();
+}
+
+void Fit::measureTime()
+{
+    auto now = std::chrono::high_resolution_clock::now();
+    auto endPoint = std::chrono::time_point_cast<std::chrono::microseconds>(now).time_since_epoch().count();
+    auto startPoint = std::chrono::time_point_cast<std::chrono::microseconds>(startTime).time_since_epoch().count();
+    auto durationms = static_cast<double>((endPoint - startPoint) * 0.001);
+    std::cout << "The program finished succesfully \n";
+    std::cout << "Process took " << durationms << " ms..."
+              << "\n";
+}
+
 double Fit::rmsCalculation(std::vector<double> &expdata, std::vector<double> &thdata)
 {
     //stop if the arrays have different sizes
@@ -133,6 +154,53 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                     //count the iterations
                     noIterations++;
                 }
+            }
+        }
+    }
+    std::cout << "Searching for the best RMS finished..."
+              << "\n";
+    std::cout << "Total number of iterations= " << noIterations << "\n";
+}
+
+void Fit::getMinimum_RMS_fixedTheta(ExperimentalData &obj, paramSet &bestParams)
+{
+
+    paramLimits limits;
+
+    //get the experimental results from the class-object
+    auto expEnergies = obj.energies;
+
+    double minval = 9876543210.123;
+    const double theta = 109;
+
+    int noIterations = 0;
+    //start searching for the minimum rms
+    for (double i1 = limits.I_left; i1 <= limits.I_right; i1 += limits.I_step)
+    {
+        for (double i2 = limits.I_left; i2 <= limits.I_right; i2 += limits.I_step)
+        {
+            for (double i3 = limits.I_left; i3 <= limits.I_right; i3 += limits.I_step)
+            {
+                //generate the theoretical stack
+                std::vector<double> thEnergies;
+
+                //populate the theoretical energies stack
+                Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
+
+                //calculate the rms
+                auto currentRMS = rmsCalculation(expEnergies, thEnergies);
+
+                //store the value (if less then current minval)
+                if (currentRMS <= minval && currentRMS != 6969)
+                {
+                    minval = currentRMS;
+                    bestParams.I1_min = i1;
+                    bestParams.I2_min = i2;
+                    bestParams.I3_min = i3;
+                    bestParams.RMS_min = minval;
+                }
+                //count the iterations
+                noIterations++;
             }
         }
     }

@@ -8,8 +8,9 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters](#least-squares-fit-procedure-for-getting-the-mathsemanticsmrowmsubmiemimtextrmsmtextmsubmrowannotation-encodingapplicationx-texe_textrmsannotationsemanticsmatherms-and-the-free-parameters)
   - [Details on the problem](#details-on-the-problem)
   - [Structure of the code](#structure-of-the-code)
-  - [Simple import of an image (*testing*)](#simple-import-of-an-image-testing)
+    - [Time measurement](#time-measurement)
   - [Potential fit results](#potential-fit-results)
+  - [Observation:](#observation)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -38,12 +39,20 @@ This `C++` project is structured as follows:
   * `energyFormulas.cpp` 
   * `main.cpp` 
   * `fitProcedure.cpp`
+ 
+ ### Time measurement
 
-## Simple import of an image (*testing*)
-![](2020-03-20-12-35-20.png)
+ The main `Fit` class has an instrument for measuring the time execution of any object which is instantiated by the user through a smart point (i.e. *unique pointer* or *shared pointer*)
+
+  * `make_unique`
+  * `make_shared`
+
+The class `Fit` -> private variable to store the start point (when object is created via the default constructed).
+The method `measureTime()` gives the total execution time of the class object on the main thread when it stops (through the default destructor).
 
 ## Potential fit results
-![](2020-03-20-12-39-29.png)
+
+![](/reports/images/2020-03-20-12-39-29.png)
 
 These are the fit parameters obtained within the new `C++` algorithm which includes the confirmed two-phonon wobbling band `TW2`.
 
@@ -54,3 +63,8 @@ I1   I2   I3   THETA
 89   12   48   -71  
 ENERGY RMS:   
 0.174452  
+
+## Observation:
+
+It seems that for the obtained fit parameters, the wobbling frequencies calculated for a chiral transformation (i.e. rotated system with an angle $\pi$), the quantity under the square root in the expression of $\omega^I$ becomes negative, which results in a **complex value**
+> **For these parameters, small spins might provide non-physical solutions!**
