@@ -110,29 +110,26 @@ int main()
     // newLine();
     // printArray_selector(thEnergies, 16, 20);
 
-    //testing the omega tuple
-    auto x = EnergyFormulae::omegaTupleCalculation(1, 1, 1, 1, 1, 11);
-    std::cout<<x.omega<<" "<<x.omegaChiral;
-    newLine();
-
-    //actual good fit algorithm
-
-    // auto bestParams = Fit::paramSet();
-    // // Fit::getMinimum_RMS(*nucleus, bestParams);
-
-    // auto startTime = std::chrono::high_resolution_clock::now();
-
+    // fit with fixed theta algorithm
     // Fit::getMinimum_RMS_fixedTheta(*nucleus, bestParams);
 
-    // auto endTime = std::chrono::high_resolution_clock::now();
-    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    // std::cout << "BEST RESULTS FOR THE THREE BANDS ARE:"
-    //           << "\n";
-    // std::cout << "I1   I2   I3   THETA"
-    //           << "\n";
-    // std::cout << bestParams.I1_min << "   " << bestParams.I2_min << "   " << bestParams.I3_min << "   " << bestParams.theta_min << "\n";
-    // std::cout << "ENERGY RMS: "
-    //           << "\n";
-    // std::cout << bestParams.RMS_min << "\n";
-    // std::cout << "Process took " << static_cast<double>(duration / 1000000.0) << " seconds" << std::endl;
+    //actual good fit algorithm
+    auto bestParams = Fit::paramSet();
+    auto startTime = std::chrono::high_resolution_clock::now();
+    Fit::getMinimum_RMS(*nucleus, bestParams);
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+    std::cout << "BEST RESULTS FOR THE THREE BANDS ARE:"
+              << "\n";
+    std::cout << "I1   I2   I3   THETA"
+              << "\n";
+    std::cout << bestParams.I1_min << "   " << bestParams.I2_min << "   " << bestParams.I3_min << "   " << bestParams.theta_min << "\n";
+    std::cout << "ENERGY RMS: "
+              << "\n";
+    std::cout << bestParams.RMS_min << "\n";
+    std::cout << "Process took " << static_cast<double>(duration / 1000000.0) << " seconds" << std::endl;
+
+    auto omegas = new EnergyFormulae::omegaTuple(5.5, j, bestParams.theta_min, bestParams.I1_min, bestParams.I2_min, bestParams.I3_min);
+    std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
 }

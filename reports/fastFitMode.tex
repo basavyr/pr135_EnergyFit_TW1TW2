@@ -1,0 +1,51 @@
+\title{Fast-fit-mode: partial results}
+\author{Robert Poenaru
+}
+\date{\today}
+\documentclass[11pt]{article}
+%\documentclass{acmconf}
+
+\usepackage[paper=a4paper,dvips,top=1.5cm,left=1.5cm,right=1.5cm,
+    foot=1cm,bottom=1.5cm]{geometry}
+
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsopn}
+\usepackage{xspace}
+\usepackage{array}
+\usepackage{epsfig}
+\usepackage{lipsum}
+\usepackage{color}
+
+\begin{document}
+
+\maketitle
+\section{Rezultate preliminarii}
+Am modificat programul astfel incat la fiecare pas, in loc sa verific daca frecventa de wobbling $\omega_\theta$ (unde frecventa de wobbling $\omega=f(I)$ este o functie de spin), fac o verificare asupra perechii:$$\Omega=\left\{\omega_\theta,\omega^\text{chiral}_{\theta'}\right\}$$ sa fie formata doar din numere reale si pozitive.
+Evident ca cea de a doua frecventa, notata de mine $\omega^\text{chiral}$, nu este altceva decat frecventa pentru unghiul $\theta'=\theta+\pi$.
+\par \emph{In acest fel, am izolat complet problema spinilor mici in care frecventa "chirala" ar fi putut fi complexa.}
+\section{Fast fit mode}
+Am luat pasi destui de mari in cautarea minimului functiei RMS (pasi mari atat pentru momentele de inertie $\mathcal{I}_k$ cat si pentru unghiul $\theta$). Pentru pasi mari, o cautare are loc in cateva minute, de aceea am numit programul \emph{fast-fit-mode}.
+\subsection{Rezultate numerice}
+Am obtinut urmatorul set de parametrii $\mathbf{X}=\left\{\theta,\mathcal{I}_1,\mathcal{I}_2,\mathcal{I}_3\right\}$:
+
+\begin{itemize}
+    \item Unghiul de coupling: $\theta=-54$\hspace{1cm} ({\color{red} Rez. anterioare: $\theta=-71$}),
+    \item Momentele de inertie: $\mathcal{I}_1=91$, $\mathcal{I}_2=11$, $\mathcal{I}_3=46$\hspace{1cm} ({\color{red} Rez. anterioare: $\mathcal{I}_1=89$, $\mathcal{I}_2=12$, $\mathcal{I}_3=48$}),
+    \item $E_\text{RMS}=0.174611$\hspace{1cm} ({\color{red} Rez. anterioare: $E_\text{RMS}=0.174452$}).
+\end{itemize}
+
+\subsection{Concluzii}
+
+\begin{itemize}
+    \item Chiar si cu pasi mari, programul a gasit un RMS destul de apropiat de cel initial, desi este putin mai mare.
+    \item Problema frecventelor de wobbling pentru $\theta'=\theta+\pi$ la spini mici $I\approx 5\hbar$ a fost rezolvata. Perechea $\Omega$ are acum doar numere reale pozitive.
+    \item Concret pentru cazul nostru, in care initial aveam probleme la spinul $11/2$: $\Omega(I=11/2)=\left\{0.158867,0.0857974\right\}$
+    \item \textbf{URMEAZA SA PUN LA RULAT PROGRAM CU PASI FOARTE MARUNTI. ESTE ASTEPTATA O IMBUNATATIRE A RMS-ULUI + FRECVENTE REALE LA SPINI MICI.}
+\end{itemize}
+
+\end{document}

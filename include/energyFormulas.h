@@ -12,10 +12,13 @@ public:
     {
         double omega;
         double omegaChiral;
-        omegaTuple(double a, double b)
+        omegaTuple(double spin, double oddSpin, double theta, double i1, double i2, double i3)
         {
-            omega = a;
-            omegaChiral = b;
+            auto I = spin;
+            auto j = oddSpin;
+            auto thetaPlusPi = theta + 180;
+            omega = EnergyFormulae::omegaFreq(I, j, theta, i1, i2, i3);
+            omegaChiral = EnergyFormulae::omegaFreq(I, j, thetaPlusPi, i1, i2, i3);
         }
     };
 

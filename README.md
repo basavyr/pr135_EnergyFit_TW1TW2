@@ -13,6 +13,7 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Observation:](#observation)
   - [Potential fix for the chiral frequencies](#potential-fix-for-the-chiral-frequencies)
     - [New method for returning the wobbling frequency](#new-method-for-returning-the-wobbling-frequency)
+  - [Partial results from the fast-mode data fit](#partial-results-from-the-fast-mode-data-fit)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -54,7 +55,7 @@ The method `measureTime()` gives the total execution time of the class object on
 
 ## Potential fit results
 
-![](/reports/images/2020-03-20-12-39-29.png)
+![](/Users/basavyr/Pipeline/DFT/Pd135_ian2019/code/pr135_EnergyFit_TW1TW2/reports/images/2020-03-20-12-39-29.png)
 
 These are the fit parameters obtained within the new `C++` algorithm which includes the confirmed two-phonon wobbling band `TW2`.
 
@@ -96,3 +97,18 @@ auto omegas= new omegaTuple();
 ```
 
 > introduce the object `omegas` in the fit condition so that both struct members are REAL and positive numbers
+
+## Partial results from the fast-mode data fit
+
+By doing a so called fast fit (where the steps for the free parameters are relatively large), an RMS which almost coincides with the previous one is obtained.  
+With the obtained parameter set **X**, the chiral frequency is a real number, even for low spins.
+
+Results can be seen below:  
+![](/Users/basavyr/Pipeline/DFT/Pd135_ian2019/code/pr135_EnergyFit_TW1TW2/reports/images/2020-03-21-13-02-29.png)
+
+BEST RESULTS FOR THE THREE BANDS ARE:  
+I1   I2   I3   THETA  
+91   11   46   -54  
+**ENERGY RMS:**
+0.174611  
+Process took 102.579 seconds  
