@@ -115,3 +115,11 @@ double EnergyFormulae::tw2(double spin, double oddSpin, double theta, double i1,
         return eTW2_I - e0;
     return 6969;
 }
+
+EnergyFormulae::omegaTuple EnergyFormulae::omegaTupleCalculation(double spin, double oddSpin, double theta, double i1, double i2, double i3)
+{
+    auto result = new omegaTuple(3, 3);
+    // result->omega = 1;
+    // result->omegaChiral = 1;
+    return *result;
+}

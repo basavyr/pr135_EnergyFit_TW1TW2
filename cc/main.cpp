@@ -110,22 +110,29 @@ int main()
     // newLine();
     // printArray_selector(thEnergies, 16, 20);
 
-    auto bestParams = Fit::paramSet();
-    // Fit::getMinimum_RMS(*nucleus, bestParams);
+    //testing the omega tuple
+    auto x = EnergyFormulae::omegaTupleCalculation(1, 1, 1, 1, 1, 11);
+    std::cout<<x.omega<<" "<<x.omegaChiral;
+    newLine();
 
-    auto startTime = std::chrono::high_resolution_clock::now();
+    //actual good fit algorithm
 
-    Fit::getMinimum_RMS_fixedTheta(*nucleus, bestParams);
+    // auto bestParams = Fit::paramSet();
+    // // Fit::getMinimum_RMS(*nucleus, bestParams);
 
-    auto endTime = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    std::cout << "BEST RESULTS FOR THE THREE BANDS ARE:"
-              << "\n";
-    std::cout << "I1   I2   I3   THETA"
-              << "\n";
-    std::cout << bestParams.I1_min << "   " << bestParams.I2_min << "   " << bestParams.I3_min << "   " << bestParams.theta_min << "\n";
-    std::cout << "ENERGY RMS: "
-              << "\n";
-    std::cout << bestParams.RMS_min << "\n";
-    std::cout << "Process took " << static_cast<double>(duration / 1000000.0) << " seconds" << std::endl;
+    // auto startTime = std::chrono::high_resolution_clock::now();
+
+    // Fit::getMinimum_RMS_fixedTheta(*nucleus, bestParams);
+
+    // auto endTime = std::chrono::high_resolution_clock::now();
+    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+    // std::cout << "BEST RESULTS FOR THE THREE BANDS ARE:"
+    //           << "\n";
+    // std::cout << "I1   I2   I3   THETA"
+    //           << "\n";
+    // std::cout << bestParams.I1_min << "   " << bestParams.I2_min << "   " << bestParams.I3_min << "   " << bestParams.theta_min << "\n";
+    // std::cout << "ENERGY RMS: "
+    //           << "\n";
+    // std::cout << bestParams.RMS_min << "\n";
+    // std::cout << "Process took " << static_cast<double>(duration / 1000000.0) << " seconds" << std::endl;
 }

@@ -11,6 +11,8 @@ E-mail: robert.poenaru@drd.unibuc.ro
     - [Time measurement](#time-measurement)
   - [Potential fit results](#potential-fit-results)
   - [Observation:](#observation)
+  - [Potential fix for the chiral frequencies](#potential-fix-for-the-chiral-frequencies)
+    - [New method for returning the wobbling frequency](#new-method-for-returning-the-wobbling-frequency)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -68,3 +70,29 @@ ENERGY RMS:
 
 It seems that for the obtained fit parameters, the wobbling frequencies calculated for a chiral transformation (i.e. rotated system with an angle $\pi$), the quantity under the square root in the expression of $\omega^I$ becomes negative, which results in a **complex value**
 > **For these parameters, small spins might provide non-physical solutions!**
+
+## Potential fix for the chiral frequencies
+
+The wobbling frequency calculated by the current algorithm has only one value which depends on the coupling angle $\theta$.  
+However, this wobbling frequency has a *chiral* partner, defined by the geometrical rotation with the angle $\pi$ around the quantization axis. So, having the normal mode wobbling frequency $\omega_\theta$ will result in the chiral partner 
+$$\omega^\text{chiral}=\omega_{\theta+\pi}$$
+In our results, the corresponding chiral partner of $\theta=-71^o$ would be $\theta^\text{chiral}=109^o$.
+> Solution
+
+Find the set of parameters **X** fot which the tuple $(\omega,\omega^\text{chiral})$ are real and positive numbers, so that the parameters will provide physical solutions to the problem;
+
+### New method for returning the wobbling frequency
+
+Define a tuple `omegaTuple` which returns a `struct` object `omegas`, that is of the type `omegas.omega` and `omegas.omegaChiral`
+
+```
+struct omegaTuple
+{
+  double omega;
+  double omegaChiral;
+};
+//initialize the tuple for storing the two values of the frequencies.
+auto omegas= new omegaTuple();
+```
+
+> introduce the object `omegas` in the fit condition so that both struct members are REAL and positive numbers
