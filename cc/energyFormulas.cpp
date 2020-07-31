@@ -86,9 +86,16 @@ double EnergyFormulae::excitationEnergy(int n, double spin, double oddSpin, doub
     //     return 6969;
 
     //generate the tuple with chiral frequencies (omega and omegachiral)
-    auto omegas = new EnergyFormulae::omegaTuple(spin, oddSpin, theta, i1, i2, i3);
+    //* In the pre-JPG sumbission, the algorithm was using the wobbling frequency corresponding to the global minimum localized at q!=0.
+    //* in the JPG-submission draft (as of July 2020), the workflow requires that for the 1-axis quantization case, only the deepest minima which is now localized at q=0;
+    //! PRE-JPG SUBMISSION
+    // auto omegas = new EnergyFormulae::omegaTuple(spin, oddSpin, theta, i1, i2, i3);
+
+    //? JPG-SUBMISION STATE
+    auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(spin, oddSpin, theta, i1, i2, i3);
+    auto omegas = omegasPrime; //! use this condition for easier continuity during the algorithm
     //stop if one of the frequencies is complex
-    if (omegas->omega == 6969 || omegas->omegaChiral == 6969)
+    if (omegas->omegaPrime == 6969 || omegas->omegaPrimeChiral == 6969)
         return 6969;
 
     auto a1 = EnergyFormulae::inertiaFactor(i1);
@@ -104,7 +111,7 @@ double EnergyFormulae::excitationEnergy(int n, double spin, double oddSpin, doub
 
     auto squaredSum = a1 * pow(j1, 2) + a2 * pow(j2, 2);
     auto minTerm = a1 * pow(I, 2) + (2.0 * I + 1.0) * a1 * j1 - I * a2 * j2 + squaredSum;
-    auto wobblingQuanta_n = omegas->omega * (n + 0.5);
+    auto wobblingQuanta_n = omegas->omegaPrime * (n + 0.5);
     auto energy_n = minTerm + wobblingQuanta_n;
     if (!isnan(energy_n))
         return energy_n;

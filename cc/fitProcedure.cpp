@@ -138,7 +138,7 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                     //populate the theoretical energies stack
                     Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
 
-                    //calculate the rms
+                    //calculate the rms with the current generated excitation energies
                     auto currentRMS = rmsCalculation(expEnergies, thEnergies);
 
                     //store the value (if less then current minval)
