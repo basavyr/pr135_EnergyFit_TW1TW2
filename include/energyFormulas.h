@@ -33,7 +33,12 @@ public:
     static double jComponent(int k, double oddSpin, double theta);
     static double inertiaFactor(double moi);
     //theta = RAD
+    //this is the Wobbling frequency which corresponds to the global minimum
+    //in our case, the global minimum was located initially at q=±2K,4K
+    //the local minima is located to other points q=0
+    //the wobbling frequency for the local minima is denoted in the draft with omegaprime (formula 4.6 in the draft)
     static double omegaFreq(double spin, double oddSpin, double theta, double i1, double i2, double i3);
+    static double omegaFreqPrime(double spin, double oddSpin, double theta, double i1, double i2, double i3);
     static omegaTuple omegaTupleCalculation(double spin, double oddSpin, double theta, double i1, double i2, double i3);
 
     //define the energy expressions (analytical formulae for the theoretical energies)

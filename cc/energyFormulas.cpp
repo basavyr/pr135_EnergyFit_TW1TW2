@@ -19,6 +19,8 @@ double EnergyFormulae::inertiaFactor(double moi)
     return a;
 }
 
+//calculation for the wobbling frequency that corresponds to the deepest minima from the potential well (in the initial draft calculations)
+//see README for more info
 double EnergyFormulae::omegaFreq(double spin, double oddSpin, double theta, double i1, double i2, double i3)
 {
     auto a1 = EnergyFormulae::inertiaFactor(i1);
@@ -41,6 +43,13 @@ double EnergyFormulae::omegaFreq(double spin, double oddSpin, double theta, doub
     if (!isnan(omega))
         return omega;
     return 6969;
+}
+
+//calculation for the wobbling frequency that corresponds to the deepest minima from the potential well (in the initial draft calculations)
+//see README for more info
+double EnergyFormulae::omegaFreqPrime(double spin, double oddSpin, double theta, double i1, double i2, double i3)
+{
+    return 0;
 }
 
 double EnergyFormulae::excitationEnergy(int n, double spin, double oddSpin, double theta, double i1, double i2, double i3)
