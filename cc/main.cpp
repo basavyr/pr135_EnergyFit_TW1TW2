@@ -132,4 +132,7 @@ int main()
 
     auto omegas = new EnergyFormulae::omegaTuple(5.5, j, bestParams.theta_min, bestParams.I1_min, bestParams.I2_min, bestParams.I3_min);
     std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
+
+    std::cout << EnergyFormulae::omegaFreq(9.5, 5.5, 30, 30, 100, 80) << "\n";
+    std::cout << EnergyFormulae::omegaFreqPrime(9.5, 5.5, 30, 30, 100, 80) << "\n";
 }
