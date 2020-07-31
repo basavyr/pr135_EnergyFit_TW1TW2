@@ -4,8 +4,8 @@ Author: Robert Poenaru
 
 E-mail: robert.poenaru@drd.unibuc.ro
 
-- [Calculating the excitation energies for the wobbling spectra of $^{135}$Pr](#calculating-the-excitation-energies-for-the-wobbling-spectra-of-mathsemanticsmrowmsupmrowmrowmn135mnmsupmrowannotation-encodingapplicationx-tex135annotationsemanticsmath135pr)
-  - [Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters](#least-squares-fit-procedure-for-getting-the-mathsemanticsmrowmsubmiemimtextrmsmtextmsubmrowannotation-encodingapplicationx-texe_textrmsannotationsemanticsmatherms-and-the-free-parameters)
+- [Calculating the excitation energies for the wobbling spectra of $^{135}$Pr](#calculating-the-excitation-energies-for-the-wobbling-spectra-of-135pr)
+  - [Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters](#least-squares-fit-procedure-for-getting-the-e_textrms-and-the-free-parameters)
   - [Details on the problem](#details-on-the-problem)
   - [Structure of the code](#structure-of-the-code)
     - [Time measurement](#time-measurement)
@@ -14,6 +14,7 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Potential fix for the chiral frequencies](#potential-fix-for-the-chiral-frequencies)
     - [New method for returning the wobbling frequency](#new-method-for-returning-the-wobbling-frequency)
   - [Partial results from the fast-mode data fit](#partial-results-from-the-fast-mode-data-fit)
+  - [July 2020 Update - JPG submission](#july-2020-update---jpg-submission)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -106,9 +107,12 @@ With the obtained parameter set **X**, the chiral frequency is a real number, ev
 Results can be seen below:  
 ![](/Users/basavyr/Pipeline/DFT/Pd135_ian2019/code/pr135_EnergyFit_TW1TW2/reports/images/2020-03-21-13-02-29.png)
 
-BEST RESULTS FOR THE THREE BANDS ARE:  
+```BEST RESULTS FOR THE THREE BANDS ARE:  
 I1   I2   I3   THETA  
 91   11   46   -54  
 **ENERGY RMS:**
 0.174611  
 Process took 102.579 seconds  
+```
+
+## July 2020 Update - JPG submission
