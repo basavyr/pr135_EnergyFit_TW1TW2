@@ -45,11 +45,37 @@ double EnergyFormulae::omegaFreq(double spin, double oddSpin, double theta, doub
     return 6969;
 }
 
-//calculation for the wobbling frequency that corresponds to the deepest minima from the potential well (in the initial draft calculations)
+//calculation for the wobbling frequency that corresponds to the local minima from the potential well (in the initial draft calculations)
 //see README for more info
 double EnergyFormulae::omegaFreqPrime(double spin, double oddSpin, double theta, double i1, double i2, double i3)
 {
-    return 0;
+    auto a1 = EnergyFormulae::inertiaFactor(i1);
+    auto a2 = EnergyFormulae::inertiaFactor(i2);
+    auto a3 = EnergyFormulae::inertiaFactor(i3);
+    //stop of the inertia moments are invalid
+    if (a1 == 6969 || a2 == 6969 || a3 == 6969)
+        return 6969;
+
+    auto j1 = EnergyFormulae::jComponent(1, oddSpin, theta);
+    auto j2 = EnergyFormulae::jComponent(2, oddSpin, theta);
+    auto I = spin;
+
+    //first difference in the omegaprime term
+    auto term1 = (2.0 * I + 1.0) * (a2 - a1 - static_cast<double>((a2 * j2) / I)) + 2.0 * a1 * j1;
+
+    //second difference in the omegaprime term
+    auto term2 = (2.0 * I + 1) * (a3 - a1) + 2.0 * a1 * j1;
+
+    //third difference in the omegaprime term
+    auto term3 = (a3 - a1) * (a2 - a1 - static_cast<double>((a2 * j2) / I));
+
+    if (isnan(term1) || isnan(term2) || isnan(term3))
+        return 6969;
+
+    auto omegaPrime = sqrt(term1 * term2 - term3);
+    if (!isnan(omegaPrime))
+        return omegaPrime;
+    return 6969;
 }
 
 double EnergyFormulae::excitationEnergy(int n, double spin, double oddSpin, double theta, double i1, double i2, double i3)
