@@ -130,9 +130,14 @@ int main()
     std::cout << bestParams.RMS_min << "\n";
     std::cout << "Process took " << static_cast<double>(duration / 1000000.0) << " seconds" << std::endl;
 
-    auto omegas = new EnergyFormulae::omegaTuple(5.5, j, bestParams.theta_min, bestParams.I1_min, bestParams.I2_min, bestParams.I3_min);
-    std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
+    // auto omegas = new EnergyFormulae::omegaTuple(5.5, j, bestParams.theta_min, bestParams.I1_min, bestParams.I2_min, bestParams.I3_min);
+    // std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
 
-    std::cout << EnergyFormulae::omegaFreq(9.5, 5.5, 30, 30, 100, 80) << "\n";
-    std::cout << EnergyFormulae::omegaFreqPrime(9.5, 5.5, 30, 30, 100, 80) << "\n";
+    auto omegas = new EnergyFormulae::omegaTuple(9.5, 5.5, 30, 30, 100, 80);
+    std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
+    auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(9.5, 5.5, 30, 30, 100, 80);
+    std::cout << omegasPrime->omegaPrime << " " << omegasPrime->omegaPrimeChiral << "\n";
+
+    // std::cout << EnergyFormulae::omegaFreq(9.5, 5.5, 30, 30, 100, 80) << "\n";
+    // std::cout << EnergyFormulae::omegaFreqPrime(9.5, 5.5, 30, 30, 100, 80) << "\n";
 }

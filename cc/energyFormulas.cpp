@@ -177,3 +177,23 @@ EnergyFormulae::omegaTuple EnergyFormulae::omegaTupleCalculation(double spin, do
     }
     return *result;
 }
+
+EnergyFormulae::omegaPrimeTuple EnergyFormulae::omegaPrimeTupleCalculation(double spin, double oddSpin, double theta, double i1, double i2, double i3)
+{
+    auto thetaPlusPi = theta + 180.0;
+    auto I = spin;
+    auto j = oddSpin;
+    auto result = new omegaPrimeTuple(I, j, theta, i1, i2, i3);
+    ;
+    // result->omega = EnergyFormulae::omegaFreq(I, j, theta, i1, i2, i3);
+    // result->omegaChiral = EnergyFormulae::omegaFreq(I, j, thetaPlusPi, i1, i2, i3);
+    if (result->omegaPrime == 6969 || result->omegaPrimeChiral == 6969)
+    {
+        std::cout << "One of the two wobbling frequencies is COMPLEX!!!"
+                  << "\n";
+        result->omegaPrime = 6969;
+        result->omegaPrimeChiral = 6969;
+        return *result;
+    }
+    return *result;
+}

@@ -22,6 +22,21 @@ public:
         }
     };
 
+    //compute and store the wobbling frequency for the triaxial nucleus and the wobbling frequency associated to the chiral partner of the single-particle angle "theta"
+    struct omegaPrimeTuple
+    {
+        double omegaPrime;
+        double omegaPrimeChiral;
+        omegaPrimeTuple(double spin, double oddSpin, double theta, double i1, double i2, double i3)
+        {
+            auto I = spin;
+            auto j = oddSpin;
+            auto thetaPlusPi = theta + 180;
+            omegaPrime = EnergyFormulae::omegaFreqPrime(I, j, theta, i1, i2, i3);
+            omegaPrimeChiral = EnergyFormulae::omegaFreqPrime(I, j, thetaPlusPi, i1, i2, i3);
+        }
+    };
+
 public:
     static constexpr double PI = 3.14159265358979;
     //oddSpin
@@ -40,6 +55,7 @@ public:
     static double omegaFreq(double spin, double oddSpin, double theta, double i1, double i2, double i3);
     static double omegaFreqPrime(double spin, double oddSpin, double theta, double i1, double i2, double i3);
     static omegaTuple omegaTupleCalculation(double spin, double oddSpin, double theta, double i1, double i2, double i3);
+    static omegaPrimeTuple omegaPrimeTupleCalculation(double spin, double oddSpin, double theta, double i1, double i2, double i3);
 
     //define the energy expressions (analytical formulae for the theoretical energies)
     //working with excitation energies (normalized to the bandhead from yrast0)
