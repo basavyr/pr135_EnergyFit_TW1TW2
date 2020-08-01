@@ -137,7 +137,12 @@ int main()
     auto omegas = new EnergyFormulae::omegaTuple(9.5, 5.5, 30, 30, 100, 80);
     // std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
     auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(9.5, 5.5, 30, 30, 100, 80);
-    
+
+    //the params obtained with the WEAK plot
+    std::cout << Fit::AFunction(9.5, 91, 11, 5.5, -57) << "\n";
+    std::cout << Fit::uFunction(9.5, 91, 11, 61, 5.5, -57) << "\n";
+    std::cout << Fit::kFunction(9.5, 91, 11, 61, 5.5, -57) << "\n";
+
     // std::cout << omegasPrime->omegaPrime << " " << omegasPrime->omegaPrimeChiral << "\n";
 
     // std::cout << EnergyFormulae::omegaFreq(9.5, 5.5, 30, 30, 100, 80) << "\n";
