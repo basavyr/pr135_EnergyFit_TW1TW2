@@ -117,7 +117,7 @@ int main()
     //actual good fit algorithm
     auto bestParams = Fit::paramSet();
     auto startTime = std::chrono::high_resolution_clock::now();
-    // Fit::getMinimum_RMS(*nucleus, bestParams);
+    Fit::getMinimum_RMS(*nucleus, bestParams);
 
     auto endTime = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();

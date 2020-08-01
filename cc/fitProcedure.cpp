@@ -224,9 +224,13 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                     std::vector<double> thEnergies;
 
                     //! the place where a validity condition for the fit parameters must be introduced
-                    std::cout << before;
-                    // if(ValidConditions())
-                    std::cout << after;
+                    // std::cout << before;
+                    if (!Validity_FullSpinRange(i1, i2, i2, EnergyFormulae::jSP, theta))
+                    {
+                        // std::cout << "Invalid params!"<< "\n";
+                        break;
+                    }
+                    // std::cout << "After the validity condition"<<"\n";
 
                     //populate the theoretical energies stack
                     Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
