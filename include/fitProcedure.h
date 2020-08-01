@@ -46,8 +46,8 @@ public:
         const double I_right = 130.0;
         const double theta_left = -180.0;
         const double theta_right = 180.0;
-        const double I_step = 1.0;
-        const double theta_step = 1.0;
+        const double I_step = 10.0;
+        const double theta_step = 10.0;
     };
 
 public:
@@ -55,6 +55,14 @@ public:
     static void generateTheoreticalData(ExperimentalData &obj, std::vector<double> &finalStack, double theta, double i1, double i2, double i3);
     static void getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams);
     static void getMinimum_RMS_fixedTheta(ExperimentalData &obj, paramSet &bestParams);
+
+    //the inertial function defined in the calculus of the triaxial potential
+    static double AFunction(double spin, double I1, double I2, double oddSpin, double theta);
+    //a special function which depends on the 1-2-3axes moments of inertia
+    static double uFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta);
+    //a special function which depends on the 1-2-3axes moments of inertia
+    static double kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta);
+    static double ValidConditions(double spin, double I1, double I2, double I3, double oddSpin, double theta);
 };
 
 #endif // FITPROCEDURE_HH

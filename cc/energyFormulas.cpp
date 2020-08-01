@@ -1,5 +1,6 @@
 #include "../include/energyFormulas.h"
 
+//! fix the expression of theta (input is in degrees )
 double EnergyFormulae::jComponent(int k, double oddSpin, double theta)
 {
     //work with theta in degrees (default input value is RAD)

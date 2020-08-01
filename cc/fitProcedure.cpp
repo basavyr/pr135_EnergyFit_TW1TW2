@@ -2,6 +2,42 @@
 // #include "../include/expdata.h"
 #include "../include/energyFormulas.h"
 
+//declare the inertial functions
+//A-inertial parameter
+double Fit::AFunction(double spin, double I1, double I2, double oddSpin, double theta)
+{
+    auto A1 = EnergyFormulae::inertiaFactor(I1);
+    auto A2 = EnergyFormulae::inertiaFactor(I2);
+    auto I = spin;
+    auto j2 = EnergyFormulae::jComponent(2, oddSpin, theta);
+    auto A = static_cast<double>(A2 * (1.0 - j2 / I) - A1);
+    return A;
+}
+//u-inertial parameter
+double Fit::uFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta)
+{
+    auto A1 = EnergyFormulae::inertiaFactor(I1);
+    auto A3 = EnergyFormulae::inertiaFactor(I3);
+    auto diff = A3 - A1;
+    auto A = Fit::AFunction(spin, I1, I2, oddSpin, theta);
+    auto u = static_cast<double>(diff / A);
+    return u;
+}
+//the k-parameter (function of u-inertial parameter)
+double Fit::kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta)
+{
+    auto u = uFunction(spin, I1, I2, I3, oddSpin, theta);
+    return sqrt(u);
+}
+
+//define the function  that checks for valid condition  on the fitting parameters
+//A must be positive
+//u must be between 0 and 1
+double Fit::ValidConditions(double I, double I1, double I2, double I3, double oddSpin, double theta)
+{
+    return 0;
+}
+
 Fit::Fit()
 {
     startTime = std::chrono::high_resolution_clock::now();
@@ -134,6 +170,8 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                 {
                     //generate the theoretical stack
                     std::vector<double> thEnergies;
+
+                    //! the place where a validity condition for the fit parameters must be introduced
 
                     //populate the theoretical energies stack
                     Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
