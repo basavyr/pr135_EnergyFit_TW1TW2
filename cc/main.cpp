@@ -136,9 +136,12 @@ int main()
     auto omegas = new EnergyFormulae::omegaTuple(9.5, 5.5, 30, 30, 100, 80);
     // std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
     auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(9.5, 5.5, 30, 30, 100, 80);
-    // std::cout << "A=" << Fit::AFunction(9.5, 30, 100, 5.5, 30) << "\n";
-    // std::cout << "u=" << Fit::uFunction(9.5, 30, 100, 80, 5.5, 30) << "\n";
-    // std::cout << "k=" << Fit::kFunction(9.5, 30, 100, 80, 5.5, 30) << "\n";
+    auto A = Fit::AFunction(9.5, 87, 12, 5.5, 30);
+    auto u = Fit::uFunction(9.5, 87, 12, 48, 5.5, 30);
+    auto k = Fit::kFunction(9.5, 87, 12, 48, 5.5, 30);
+    std::cout << A << " " << u << " " << k << "\n";
+    // std::cout << Fit::ValidConditions(9.5, 30, 100, 80, 5.5, 30);
+    std::cout << Fit::ValidConditions_Direct(A, u);
 
     // std::cout << omegasPrime->omegaPrime << " " << omegasPrime->omegaPrimeChiral << "\n";
 

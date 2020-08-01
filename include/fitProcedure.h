@@ -63,6 +63,7 @@ public:
     //a special function which depends on the 1-2-3axes moments of inertia
     static double kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta);
     static double ValidConditions(double spin, double I1, double I2, double I3, double oddSpin, double theta);
+    static double ValidConditions_Direct(double A, double u);
 };
 
 #endif // FITPROCEDURE_HH

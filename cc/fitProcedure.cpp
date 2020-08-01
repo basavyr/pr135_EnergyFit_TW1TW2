@@ -27,7 +27,7 @@ double Fit::uFunction(double spin, double I1, double I2, double I3, double oddSp
 double Fit::kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta)
 {
     auto u = uFunction(spin, I1, I2, I3, oddSpin, theta);
-    return sqrt(u);
+    return sqrt(abs(u));
 }
 
 //define the function  that checks for valid condition  on the fitting parameters
@@ -35,6 +35,31 @@ double Fit::kFunction(double spin, double I1, double I2, double I3, double oddSp
 //u must be between 0 and 1
 double Fit::ValidConditions(double I, double I1, double I2, double I3, double oddSpin, double theta)
 {
+    auto j = oddSpin;
+    auto A = Fit::AFunction(I, I1, I2, j, theta);
+    auto u = Fit::uFunction(I, I1, I2, I3, j, theta);
+    auto k = Fit::kFunction(I, I1, I2, I3, j, theta);
+    bool ok_A = false;
+    bool ok_u = false;
+    if (A >= 0.00)
+        ok_A = true;
+    if (u > 0.0 && u < 1.0)
+        ok_u = true;
+    if (ok_u && ok_A)
+        return 1;
+    return 0;
+}
+
+double Fit::ValidConditions_Direct(double A, double u)
+{
+    bool ok_A = false;
+    bool ok_u = false;
+    if (A >= 0.00)
+        ok_A = true;
+    if (u > 0.0 && u < 1.0)
+        ok_u = true;
+    if (ok_u && ok_A)
+        return 1;
     return 0;
 }
 
