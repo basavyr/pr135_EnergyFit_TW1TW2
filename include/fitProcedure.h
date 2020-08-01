@@ -46,7 +46,7 @@ public:
         const double I_right = 130.0;
         const double theta_left = -180.0;
         const double theta_right = 180.0;
-        const double I_step = 10.0;
+        const double I_step = 1.0;
         const double theta_step = 1.0;
     };
 
