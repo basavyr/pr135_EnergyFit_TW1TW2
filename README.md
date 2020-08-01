@@ -116,3 +116,14 @@ Process took 102.579 seconds
 ```
 
 ## July 2020 Update - JPG submission
+
+```
+Searching for the best RMS finished...
+Total number of iterations= 196209000
+BEST RESULTS FOR THE THREE BANDS ARE:
+I1   I2   I3   THETA
+91   9   51   -119
+ENERGY RMS: 
+0.174715
+Process took 3728.41 seconds
+```
