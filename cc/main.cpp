@@ -3,6 +3,7 @@
 #include "../include/expdata.h"
 #include "../include/energyFormulas.h"
 #include "../include/fitProcedure.h"
+#include <initializer_list>
 #include <utility>
 
 void newLine()
@@ -116,7 +117,7 @@ int main()
     //actual good fit algorithm
     auto bestParams = Fit::paramSet();
     auto startTime = std::chrono::high_resolution_clock::now();
-    Fit::getMinimum_RMS(*nucleus, bestParams);
+    // Fit::getMinimum_RMS(*nucleus, bestParams);
 
     auto endTime = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
@@ -136,13 +137,7 @@ int main()
     auto omegas = new EnergyFormulae::omegaTuple(9.5, 5.5, 30, 30, 100, 80);
     // std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
     auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(9.5, 5.5, 30, 30, 100, 80);
-    auto A = Fit::AFunction(9.5, 87, 12, 5.5, 30);
-    auto u = Fit::uFunction(9.5, 87, 12, 48, 5.5, 30);
-    auto k = Fit::kFunction(9.5, 87, 12, 48, 5.5, 30);
-    std::cout << A << " " << u << " " << k << "\n";
-    // std::cout << Fit::ValidConditions(9.5, 30, 100, 80, 5.5, 30);
-    std::cout << Fit::ValidConditions_Direct(A, u);
-
+    
     // std::cout << omegasPrime->omegaPrime << " " << omegasPrime->omegaPrimeChiral << "\n";
 
     // std::cout << EnergyFormulae::omegaFreq(9.5, 5.5, 30, 30, 100, 80) << "\n";

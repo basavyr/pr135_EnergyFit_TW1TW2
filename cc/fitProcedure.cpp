@@ -2,6 +2,9 @@
 // #include "../include/expdata.h"
 #include "../include/energyFormulas.h"
 
+const std::string before = "Before validity condition!\n";
+const std::string after = "Valid parameters!\n";
+
 //declare the inertial functions
 //A-inertial parameter
 double Fit::AFunction(double spin, double I1, double I2, double oddSpin, double theta)
@@ -59,6 +62,30 @@ double Fit::ValidConditions_Direct(double A, double u)
     if (u > 0.0 && u < 1.0)
         ok_u = true;
     if (ok_u && ok_A)
+        return 1;
+    return 0;
+}
+
+double Fit::Validity_FullSpinRange(double I1, double I2, double I3, double oddSpin, double theta)
+{
+    int counter = 0;
+    auto spinHead = 5.5;
+    auto spinEnd = 22.5;
+    auto spinStep = 2.0;
+    std::vector<double> spinSeq;
+    for (auto i = spinHead; i <= spinEnd; i += spinStep)
+    {
+        spinSeq.emplace_back(i);
+    }
+    for (auto &&spin : spinSeq)
+    {
+        if (ValidConditions(spin, I1, I2, I3, oddSpin, theta) == 1)
+        {
+            counter++;
+            // std::cout << "ok for this spin and params"<< "\n";
+        }
+    }
+    if (counter == spinSeq.size())
         return 1;
     return 0;
 }
@@ -197,6 +224,9 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                     std::vector<double> thEnergies;
 
                     //! the place where a validity condition for the fit parameters must be introduced
+                    std::cout << before;
+                    // if(ValidConditions())
+                    std::cout << after;
 
                     //populate the theoretical energies stack
                     Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);

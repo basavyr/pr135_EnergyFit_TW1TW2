@@ -64,6 +64,7 @@ public:
     static double kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta);
     static double ValidConditions(double spin, double I1, double I2, double I3, double oddSpin, double theta);
     static double ValidConditions_Direct(double A, double u);
+    static double Validity_FullSpinRange(double I1, double I2, double I3, double oddSpin, double theta);
 };
 
 #endif // FITPROCEDURE_HH
