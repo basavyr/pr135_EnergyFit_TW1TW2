@@ -25,3 +25,11 @@ Based on the moments of inertia's ordering, there can be three general cases on 
 * 3-axis ordering: the maximal MOI is the one along 3-axis. Calculations are performed using 3-axis as the quantization axis.
 
 Using all these quantization cases, the parameter set must verify that the inertial functions $A>0$ and $k=\sqrt{u}$.
+
+Another condition is that the $u$ must be subunitary, or more precisely $u<1,u>-1,|u|\leq 1$.
+
+The calculation of the energy surface implies prior knowledge of the MOI's ordering, the total spin state of the nucleus and the angular momentum of its odd particle.
+
+Once these values are fixed, based on the fit parameters, the contour plot can be realized, representing the energy function in terms of spherical coordinates $(\theta,\varphi)$. The contour plot can provide relevant information regarding the actual type of *wobbling regime*, wether it is transverse or longitudinal, or wether the nucleus is rotating in one of the local minimum points, or a global minimum.
+
+Regarding the actual fitting procedure, a Notability diagram will be added in the source documentation. 
