@@ -16,6 +16,8 @@ $$V(q)=F(I,A_1,A_2,A_3,j,\theta)$$
 
 where $I$ and $j$ are known values and can be fixed *a-priori*. As a result $P\equiv[A_1,A_2,A_3,\theta]$.
 
+![](./reports/images/2020-08-03-07-07-34.png)
+
 ### Quantization axes
 
 Based on the moments of inertia's ordering, there can be three general cases on which the nucleus exhibits wobbling motion, and it can be represented as a special kind of motion, confined by the triaxial potential, which allows for the physical existence of its wobbling excitation states.
@@ -28,8 +30,22 @@ Using all these quantization cases, the parameter set must verify that the inert
 
 Another condition is that the $u$ must be subunitary, or more precisely $u<1,u>-1,|u|\leq 1$.
 
+## Energy surface $H(\theta,\varphi)$
+
 The calculation of the energy surface implies prior knowledge of the MOI's ordering, the total spin state of the nucleus and the angular momentum of its odd particle.
 
 Once these values are fixed, based on the fit parameters, the contour plot can be realized, representing the energy function in terms of spherical coordinates $(\theta,\varphi)$. The contour plot can provide relevant information regarding the actual type of *wobbling regime*, wether it is transverse or longitudinal, or wether the nucleus is rotating in one of the local minimum points, or a global minimum.
+
+Based on the quantization axis, a proper expression for the energy function $H$ will be constructed, using the *spherical coordinates* $(I,\theta,\varphi)$ which are used to express the angular momentum components $I:x_1,x_2,x_3$. Once the new angular momentum terms are adopted into the initial expression of $H$, then a contour plot in variables $(\theta,\varphi)$ (at a fixed spin $I$ and odd-particle angular momentum $j$) can be constructed.
+
+![](./reports/images/2020-08-03-07-07-12.png)
+
+### Critical points
+
+Each quantization case will have an energy function which has several *critical points*. The points on the contour plot can represent:
+
+* maximum regions (unstable wobbling): *local* and *global*
+* saddle regions 
+* minimum regions (stable wobbling): *local* and *global*
 
 Regarding the actual fitting procedure, a Notability diagram will be added in the source documentation. 
