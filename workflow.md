@@ -49,3 +49,9 @@ Each quantization case will have an energy function which has several *critical 
 * minimum regions (stable wobbling): *local* and *global*
 
 Regarding the actual fitting procedure, a Notability diagram will be added in the source documentation. 
+
+![](reports/images/july_2020_plots/Page1.jpeg)
+
+___
+
+![](reports/images/july_2020_plots/Page2.jpeg)
