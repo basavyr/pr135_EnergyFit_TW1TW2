@@ -116,7 +116,7 @@ I1   I2   I3   THETA
 Process took 102.579 seconds  
 ```
 
-## July 2020 Update - JPG submission
+## [July 2020 Update - JPG submission](workflow.md)
 
 In this update, the program is replacing the wobbling frequency used in calculations with an alternative form: expanded around one of the local minima (from the original draft version).
 If $\omega$ is the wobbling frequency corresponding the the triaxial potential, expanded around the global minimum ($q=0$), then $\omega'$ is the wobbling frequency of the rotor, in one of its local minimum points. The new fitting procedure adopts $\omega'$ in calculations, obtaining a new set of fitting parameters and a new value for the $E_{RMS}$.
@@ -128,6 +128,8 @@ The fit parameters must also be used in calculation of the triaxal potential its
 Moreover, after the calculation of the triaxial potential $V(q)$, some numerical computations must also be performed with regards to the energy surface $\mathcal{H}(\theta,\varphi)$. The energy surface $\mathcal{H}(\theta,\varphi)$ can be represented graphically through a *contour plot*. Using Wolfram Mathematica's built-in function `ContourPlot`, it is straightforward to plot this function once the fit parameters are determined.
 
 **Obs:** However, besides the parameter set $P$, fixed values for the total spin of the nucleus and the value of the angular momentum for the odd-particle must also be assigned, as the energy surface depends on these two values explicitly.
+
+>More info on the draft update's workflow can be seen [here](workflow.md)
 
 ```
 Searching for the best RMS finished...
