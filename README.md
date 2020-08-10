@@ -16,6 +16,7 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Partial results from the fast-mode data fit](#partial-results-from-the-fast-mode-data-fit)
   - [July 2020 Update - JPG submission](#july-2020-update---jpg-submission)
     - [Validity conditions](#validity-conditions)
+    - [A detailed diagram with the overall workflow for finding valid paramters](#a-detailed-diagram-with-the-overall-workflow-for-finding-valid-paramters)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -141,3 +142,8 @@ ENERGY RMS:
 0.174715
 Process took 3728.41 seconds
 ```
+
+
+### A detailed diagram with the overall workflow for finding valid paramters
+
+![](reports/images/TriaxialPotentialCalculation.jpg)
