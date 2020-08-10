@@ -16,7 +16,8 @@ E-mail: robert.poenaru@drd.unibuc.ro
   - [Partial results from the fast-mode data fit](#partial-results-from-the-fast-mode-data-fit)
   - [July 2020 Update - JPG submission](#july-2020-update---jpg-submission)
     - [Validity conditions](#validity-conditions)
-    - [A detailed diagram with the overall workflow for finding valid paramters](#a-detailed-diagram-with-the-overall-workflow-for-finding-valid-paramters)
+    - [A detailed diagram with the overall workflow for finding valid parameters](#a-detailed-diagram-with-the-overall-workflow-for-finding-valid-parameters)
+    - [A detailed diagram with the overall workflow for computing the energy function](#a-detailed-diagram-with-the-overall-workflow-for-computing-the-energy-function)
 
 ## Least-squares-fit procedure for getting the $E_\text{RMS}$ and the free parameters  
 
@@ -143,7 +144,10 @@ ENERGY RMS:
 Process took 3728.41 seconds
 ```
 
+### A detailed diagram with the overall workflow for finding valid parameters
 
-### A detailed diagram with the overall workflow for finding valid paramters
+![image1](reports/images/TriaxialPotentialCalculation.jpg)
 
-![](reports/images/TriaxialPotentialCalculation.jpg)
+### A detailed diagram with the overall workflow for computing the energy function
+
+![image2](reports/images/EnergySurfaceWorkflow.jpg)
