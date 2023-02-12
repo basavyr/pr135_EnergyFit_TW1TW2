@@ -5,8 +5,8 @@
 const std::string before = "Before validity condition!\n";
 const std::string after = "Valid parameters!\n";
 
-//declare the inertial functions
-//A-inertial parameter
+// declare the inertial functions
+// A-inertial parameter
 double Fit::AFunction(double spin, double I1, double I2, double oddSpin, double theta)
 {
     auto A1 = EnergyFormulae::inertiaFactor(I1);
@@ -16,7 +16,7 @@ double Fit::AFunction(double spin, double I1, double I2, double oddSpin, double 
     auto A = static_cast<double>(A2 * (1.0 - j2 / I) - A1);
     return A;
 }
-//u-inertial parameter
+// u-inertial parameter
 double Fit::uFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta)
 {
     auto A1 = EnergyFormulae::inertiaFactor(I1);
@@ -26,16 +26,16 @@ double Fit::uFunction(double spin, double I1, double I2, double I3, double oddSp
     auto u = static_cast<double>(diff / A);
     return u;
 }
-//the k-parameter (function of u-inertial parameter)
+// the k-parameter (function of u-inertial parameter)
 double Fit::kFunction(double spin, double I1, double I2, double I3, double oddSpin, double theta)
 {
     auto u = uFunction(spin, I1, I2, I3, oddSpin, theta);
     return sqrt(abs(u));
 }
 
-//define the function  that checks for valid condition  on the fitting parameters
-//A must be positive
-//u must be between 0 and 1
+// define the function  that checks for valid condition  on the fitting parameters
+// A must be positive
+// u must be between 0 and 1
 double Fit::ValidConditions(double I, double I1, double I2, double I3, double oddSpin, double theta)
 {
     auto j = oddSpin;
@@ -113,7 +113,7 @@ void Fit::measureTime()
 
 double Fit::rmsCalculation(std::vector<double> &expdata, std::vector<double> &thdata)
 {
-    //stop if the arrays have different sizes
+    // stop if the arrays have different sizes
     if (expdata.size() != thdata.size())
         return 6969;
     double sum = 0;
@@ -148,12 +148,12 @@ void Fit::generateTheoreticalData(ExperimentalData &obj, std::vector<double> &fi
     auto tw2Size = ExperimentalData::spin2.size();
     auto totalSize = yrastSize + tw1Size + tw2Size;
     int errorchecker = 0;
-    //fill the YRAST BAND
+    // fill the YRAST BAND
     for (auto id = 0; id < yrastSize; ++id)
     {
         auto I = obj.spins.at(id);
         auto energy_I = EnergyFormulae::yrast0(I, j, theta, i1, i2, i3);
-        //only add valid numbers
+        // only add valid numbers
         if (energy_I != 6969)
         {
             finalStack.emplace_back(energy_I);
@@ -165,12 +165,12 @@ void Fit::generateTheoreticalData(ExperimentalData &obj, std::vector<double> &fi
         }
     }
 
-    //fill the TW1 BAND
+    // fill the TW1 BAND
     for (auto id = yrastSize; id < tw1Size + yrastSize; ++id)
     {
         auto I = obj.spins.at(id);
         auto energy_I = EnergyFormulae::tw1(I, j, theta, i1, i2, i3);
-        //only add valid numbers
+        // only add valid numbers
         if (energy_I != 6969)
         {
             finalStack.emplace_back(energy_I);
@@ -182,19 +182,19 @@ void Fit::generateTheoreticalData(ExperimentalData &obj, std::vector<double> &fi
         }
     }
 
-    //fill the TW2 BAND
+    // fill the TW2 BAND
     for (auto id = tw1Size + yrastSize; id < tw1Size + yrastSize + tw2Size; ++id)
     {
         auto I = obj.spins.at(id);
         auto energy_I = EnergyFormulae::tw2(I, j, theta, i1, i2, i3);
-        //only add valid numbers
+        // only add valid numbers
         if (energy_I != 6969)
         {
             finalStack.emplace_back(energy_I);
             errorchecker++;
         }
     }
-    //check if the generated array has the correct size;
+    // check if the generated array has the correct size;
     if (errorchecker != totalSize)
         std::cout << "SHOULD FAIL IN RMS CALCULATION..."
                   << "\n";
@@ -204,13 +204,13 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
 {
     paramLimits limits;
 
-    //get the experimental results from the class-object
+    // get the experimental results from the class-object
     auto expEnergies = obj.energies;
 
     double minval = 9876543210.123;
 
     int noIterations = 0;
-    //start searching for the minimum rms
+    // start searching for the minimum rms
     for (double i1 = limits.I_left; i1 <= limits.I_right; i1 += limits.I_step)
     {
         for (double i2 = limits.I_left; i2 <= limits.I_right; i2 += limits.I_step)
@@ -220,7 +220,7 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                 for (double theta = limits.theta_left; theta <= limits.theta_right; theta += limits.theta_step)
 
                 {
-                    //generate the theoretical stack
+                    // generate the theoretical stack
                     std::vector<double> thEnergies;
 
                     //! the place where a validity condition for the fit parameters must be introduced
@@ -232,13 +232,13 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                     }
                     // std::cout << "After the validity condition"<<"\n";
 
-                    //populate the theoretical energies stack
+                    // populate the theoretical energies stack
                     Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
 
-                    //calculate the rms with the current generated excitation energies
+                    // calculate the rms with the current generated excitation energies
                     auto currentRMS = rmsCalculation(expEnergies, thEnergies);
 
-                    //store the value (if less then current minval)
+                    // store the value (if less then current minval)
                     if (currentRMS <= minval && currentRMS != 6969)
                     {
                         minval = currentRMS;
@@ -248,7 +248,7 @@ void Fit::getMinimum_RMS(ExperimentalData &obj, paramSet &bestParams)
                         bestParams.theta_min = theta;
                         bestParams.RMS_min = minval;
                     }
-                    //count the iterations
+                    // count the iterations
                     noIterations++;
                 }
             }
@@ -264,30 +264,30 @@ void Fit::getMinimum_RMS_fixedTheta(ExperimentalData &obj, paramSet &bestParams)
 
     paramLimits limits;
 
-    //get the experimental results from the class-object
+    // get the experimental results from the class-object
     auto expEnergies = obj.energies;
 
     double minval = 9876543210.123;
     const double theta = 109;
 
     int noIterations = 0;
-    //start searching for the minimum rms
+    // start searching for the minimum rms
     for (double i1 = limits.I_left; i1 <= limits.I_right; i1 += limits.I_step)
     {
         for (double i2 = limits.I_left; i2 <= limits.I_right; i2 += limits.I_step)
         {
             for (double i3 = limits.I_left; i3 <= limits.I_right; i3 += limits.I_step)
             {
-                //generate the theoretical stack
+                // generate the theoretical stack
                 std::vector<double> thEnergies;
 
-                //populate the theoretical energies stack
+                // populate the theoretical energies stack
                 Fit::generateTheoreticalData(obj, thEnergies, theta, i1, i2, i3);
 
-                //calculate the rms
+                // calculate the rms
                 auto currentRMS = rmsCalculation(expEnergies, thEnergies);
 
-                //store the value (if less then current minval)
+                // store the value (if less then current minval)
                 if (currentRMS <= minval && currentRMS != 6969)
                 {
                     minval = currentRMS;
@@ -296,7 +296,7 @@ void Fit::getMinimum_RMS_fixedTheta(ExperimentalData &obj, paramSet &bestParams)
                     bestParams.I3_min = i3;
                     bestParams.RMS_min = minval;
                 }
-                //count the iterations
+                // count the iterations
                 noIterations++;
             }
         }

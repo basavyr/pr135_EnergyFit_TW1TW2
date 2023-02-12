@@ -114,7 +114,7 @@ int main()
     // fit with fixed theta algorithm
     // Fit::getMinimum_RMS_fixedTheta(*nucleus, bestParams);
 
-    //actual good fit algorithm
+    // actual good fit algorithm
     auto bestParams = Fit::paramSet();
     auto startTime = std::chrono::high_resolution_clock::now();
     Fit::getMinimum_RMS(*nucleus, bestParams);
@@ -138,7 +138,7 @@ int main()
     // std::cout << omegas->omega << " " << omegas->omegaChiral << "\n";
     auto omegasPrime = new EnergyFormulae::omegaPrimeTuple(9.5, 5.5, 30, 30, 100, 80);
 
-    //the params obtained with the WEAK plot
+    // the params obtained with the WEAK plot
     std::cout << Fit::AFunction(9.5, 91, 11, 5.5, -57) << "\n";
     std::cout << Fit::uFunction(9.5, 91, 11, 61, 5.5, -57) << "\n";
     std::cout << Fit::kFunction(9.5, 91, 11, 61, 5.5, -57) << "\n";
